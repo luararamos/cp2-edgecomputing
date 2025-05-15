@@ -10,9 +10,9 @@ Projeto de circuito para uma vinícola que busca automatizar o monitoramento das
 
 | Nome   | RM       | E-mail                     |
 |--------|----------|----------------------------|
-| Luara  | 565573   | rm565573@fiap.com.br       |
-| Kaio   | 566536   | rm566536@fiap.com.br       |
-| Jean   | 566534   | rm566534@fiap.com.br       |
+| Luara Martins de Oliveira Ramos  | 565573   | rm565573@fiap.com.br       |
+| Kaio Victtor Santos Andrade Galvão   | 566536   | rm566536@fiap.com.br       |
+| Jean Pierre Andrade Feltran   | 566534   | rm566534@fiap.com.br       |
 
 ---
 
