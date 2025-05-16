@@ -79,8 +79,7 @@ Conectado aos pinos **A2 (SDA)** e **A3 (SCL)**, o LCD exibe os valores médios 
 
 O código completo está na pasta `codigo-c/` com o arquivo `cp_2_edge_grupo_7.ino`.
 
-Você também pode acessá-lo diretamente 👉 **_Clique aqui_**([https://github.com/luararamos/cp2-edgecomputing/blob/main/codigo-c/cp_2_edge_grupo_7.ino]
-
+Você também pode acessá-lo diretamente 👉 *[**Clique aqui**](https://github.com/luararamos/cp2-edgecomputing/blob/main/codigo-c/cp_2_edge_grupo_7.ino)
 
 
 ---
