@@ -11,7 +11,6 @@
 
 LiquidCrystal_I2C lcd(0x20, 16, 2);
 
-// 🥂 Caracteres personalizados
 byte wineGlass[8] = {
   B00000,
   B01110,
