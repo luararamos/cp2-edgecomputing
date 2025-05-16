@@ -57,28 +57,10 @@ Conectado aos pinos **A2 (SDA)** e **A3 (SCL)**, o LCD exibe os valores médios 
 
 ---
 
-## 🧠 Lógica de Funcionamento
+## 🚀 MVP do Produto
 
-### Intervalos de Luminosidade
-| Nível de Luz        | LED Ativado | Buzzer | Mensagem no LCD         |
-|---------------------|-------------|--------|--------------------------|
-| ≤ 70 (escuro)       | Verde       | Não    | -                        |
-| > 70 e ≤ 85 (meia)  | Amarelo     | Não    | "Ambiente a meia luz"    |
-| > 85 (claro)        | Vermelho    | Sim    | "Ambiente muito claro"   |
+<img src="https://github.com/user-attachments/assets/e67419fa-3088-42b7-8628-9e8ae6f03414" alt="Dispositivo Arduino com Sensor DHT11" width="400" />
 
-### Intervalos de Temperatura
-| Temperatura (°C)  | LED         | Buzzer | Mensagem no LCD      |
-|------------------|-------------|--------|------------------------|
-| 10°C a 15°C       | Nenhum      | Não    | "Temperatura OK"       |
-| < 10°C            | Amarelo     | Sim    | "Temp. Baixa"          |
-| > 15°C            | Amarelo     | Sim    | "Temp. Alta"           |
-
-### Intervalos de Umidade
-| Umidade (%)       | LED         | Buzzer | Mensagem no LCD      |
-|------------------|-------------|--------|------------------------|
-| 50% a 70%         | Nenhum      | Não    | "Umidade OK"           |
-| < 50%             | Vermelho    | Sim    | "Umidade Baixa"        |
-| > 70%             | Vermelho    | Sim    | "Umidade Alta"         |
 
 ---
 
@@ -95,14 +77,19 @@ Conectado aos pinos **A2 (SDA)** e **A3 (SCL)**, o LCD exibe os valores médios 
 
 ## 👩‍💻 Código do Circuito
 
-O código completo está na pasta `codigo_cp2/` com o arquivo `codigo_cp2.ino`.
+O código completo está na pasta `codigo-c/` com o arquivo `cp_2_edge_grupo_7.ino`.
 
-Você também pode acessá-lo diretamente 👉 **_Clique aqui_**
+Você também pode acessá-lo diretamente 👉 **_Clique aqui_**([https://github.com/luararamos/cp2-edgecomputing/blob/main/codigo-c/cp_2_edge_grupo_7.ino]
+
+
 
 ---
 
 ## 🧪 Montagem do Circuito
 
-Ambiente simulado para testes do circuito 👉 **_Clique aqui_**
+Ambiente simulado do circuito 👉 [**Clique aqui**](https://www.tinkercad.com/things/8FnMSzi0G7J-cp-2-edge-grupo-7/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=HaBvEHHctf9PeKeA9z_7yYxlNdv7NT31blenweq09PE)
 
-> **Importante:** o projeto foi testado no Tinkercad com as bibliotecas disponíveis, utilizando o LCD com I2C do tipo **PCF8574**.
+<img src="https://github.com/user-attachments/assets/3d08ddfe-437e-47f8-b3ff-68684d1bf81a" alt="Foto do circuito" width="500" />
+
+
+
