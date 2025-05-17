@@ -2,7 +2,7 @@
 
 Projeto de circuito para uma vinheria que busca automatizar o monitoramento das condições ambientais da adega, incluindo **luminosidade, temperatura e umidade**. A ideia é garantir a conservação ideal dos vinhos armazenados, usando sensores e um display para informar a situação em tempo real. O projeto utiliza conceitos aprendidos em aula e complementa com pesquisas adicionais.
 
-📺 **Veja o vídeo explicativo do projeto 👉 _Clique aqui!_**
+📺 **Veja o vídeo explicativo do projeto 👉 [**Clique aqui**](https://www.youtube.com/watch?v=vkRdPV0pZD8&t=1s)
 
 ---
 
