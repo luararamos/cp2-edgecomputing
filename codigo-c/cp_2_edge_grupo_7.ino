@@ -11,6 +11,7 @@
 
 LiquidCrystal_I2C lcd(0x20, 16, 2);
 
+// 🥂 Caracteres personalizados
 byte wineGlass[8] = {
   B00000,
   B01110,
@@ -36,6 +37,9 @@ byte wineBottle[8] = {
 unsigned long tempo_buzina_alerta = 0;
 unsigned long tempo_buzina_problema = 0;
 unsigned long tempo_lcd = 0;
+unsigned long tempo_tela = 0;
+
+bool mostrarInfos = true;  // controle para alternar mensagens
 
 void setup() {
   Serial.begin(9600);
@@ -59,6 +63,13 @@ void setup() {
 void loop() {
   unsigned long agora = millis();
 
+  // Alterna a mensagem a cada 3 segundos
+  if (agora - tempo_tela >= 3000) {
+    tempo_tela = agora;
+    mostrarInfos = !mostrarInfos;
+  }
+  
+
   if (agora - tempo_lcd >= 1000) {
     tempo_lcd = agora;
 
@@ -71,36 +82,90 @@ void loop() {
     int leitura_sensor_umidade = analogRead(sensor_umidade);
     int umidade_percentual = map(leitura_sensor_umidade, 0, 1023, 0, 100);
 
-    Serial.print("LDR: ");
-    Serial.print(variacao_luz);
-    Serial.print("% | Temp: ");
-    Serial.print(temperatura_celsius);
-    Serial.print("°C | Umidade: ");
-    Serial.print(umidade_percentual);
-    Serial.println("%");
-
     lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("Luz:");
-    lcd.print(variacao_luz);
-    lcd.print("% T:");
-    lcd.print((int)temperatura_celsius);
-    lcd.print("C");
 
-    lcd.setCursor(0, 1);
-    lcd.print("Umid:");
-    lcd.print(umidade_percentual);
-    lcd.print("% ");
-    lcd.write(byte(0)); // taça
-    lcd.write(byte(1)); // garrafa
+    if (mostrarInfos) {
+      Serial.print(variacao_luz);
+      Serial.print("% | Temp: ");
+      Serial.print(temperatura_celsius);
+      Serial.print("°C | Umidade: ");
+      Serial.println(umidade_percentual);
 
-    if (variacao_luz <= 70) {
-      status_ok();
-    } else if (variacao_luz <= 85) {
-      status_alerta();
+      lcd.setCursor(0, 0);
+      lcd.print("Luz:");
+      lcd.print(variacao_luz);
+      lcd.print("% T:");
+      lcd.print((int)temperatura_celsius);
+      lcd.print("C");
+
+      lcd.setCursor(0, 1);
+      lcd.print("Umid:");
+      lcd.print(umidade_percentual);
+      lcd.print("% ");
+      lcd.write(byte(0)); // taça
+      lcd.write(byte(1)); // garrafa
     } else {
-      status_problema();
-    }
+  		static unsigned long tempo_mensagem = 0;
+  		static bool mostrar_umidade = false;
+
+  		// Alterna a cada 2 segundos (2000 ms)
+ 		 if (millis() - tempo_mensagem >= 2000) {
+ 		   mostrar_umidade = !mostrar_umidade;
+  		  tempo_mensagem = millis();
+  		}
+
+  		lcd.clear();
+
+ 		 if (!mostrar_umidade) {
+  		  // Primeiros 2s: iluminação e temperatura
+  		  lcd.setCursor(0, 0);
+  		  if (variacao_luz <= 30) {
+   		   lcd.print("Amb escuro");
+   		 } 
+   		 else if (variacao_luz <= 70) {
+   		   lcd.print("Meia luz");
+   		 } 
+   		 else {
+    		  lcd.print("Amb claro");
+   		 }
+
+   		 lcd.setCursor(0, 1);
+   		 if (temperatura_celsius >= 10 && temperatura_celsius <= 15) {
+   		   lcd.print("Temp OK ");
+  		  } 
+   		 else if (temperatura_celsius > 15) {
+   		   lcd.print("Temp Alta ");
+  		  } 
+  		  else {
+   		   lcd.print("Temp Baixa ");
+   		 }
+
+ 		 } else {
+ 		   // Depois dos 2s: só umidade
+  		  lcd.setCursor(0, 0);
+  		  lcd.print("Umidade:");
+
+   		 lcd.setCursor(0, 1);
+  		  if (umidade_percentual >= 50 && umidade_percentual <= 70) {
+   		   lcd.print("Umid OK ");
+  		  } 
+   		 else if (umidade_percentual > 70) {
+   		   lcd.print("Umid Alta ");
+  		  } 
+  		  else {
+  		    lcd.print("Umid Baixa ");
+  		  }
+ 		 }
+      
+    		}
+
+    		if (variacao_luz <= 70) {
+   		   status_ok();
+   		 } else if (variacao_luz <= 85) {
+   		   status_alerta();
+ 		   } else {
+   		   status_problema();
+   		 }
   }
 
   atualiza_buzinas();
